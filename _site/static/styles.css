@@ -1,0 +1,136 @@
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --line: #e2e8f0;
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
+  line-height: 1.65;
+  color: var(--text);
+  background: radial-gradient(circle at top right, #e2e8f0 0%, var(--bg) 40%);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 0.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+}
+
+p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-strong);
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, #ffffff 85%, transparent);
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  height: 2.25rem;
+  padding: 0 0.65rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+nav a:hover {
+  background: #f1f5f9;
+}
+
+.grid,
+[class*="grid"] {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .grid,
+  [class*="grid"] {
+    gap: 1.2rem;
+  }
+}
+
+article,
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  box-shadow: 0 8px 24px -18px rgba(15, 23, 42, 0.4);
+}
+
+article {
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+article:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -20px rgba(15, 23, 42, 0.5);
+}
+
+button,
+.button,
+a.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid transparent;
+  border-radius: 0.55rem;
+  font-weight: 600;
+  line-height: 1;
+  background: var(--accent);
+  color: #ffffff;
+}
+
+button:hover,
+.button:hover,
+a.button:hover {
+  background: var(--accent-strong);
+  color: #ffffff;
+}
+
+main {
+  padding-bottom: 2rem;
+}

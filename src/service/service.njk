@@ -1,0 +1,30 @@
+---
+layout: layout.njk
+title: Service
+permalink: /service/index.html
+---
+<section class="mx-auto max-w-6xl px-4 py-12">
+  <h1 class="text-3xl font-bold text-slate-900">Service</h1>
+
+  {% set categories = ["conference", "editorial", "outreach"] %}
+
+  {% for category in categories %}
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold capitalize text-slate-900">{{ category }}</h2>
+      <div class="mt-4 space-y-4">
+        {% for item in collections.service %}
+          {% if item.data.category == category %}
+            <article class="rounded-lg border border-slate-200 p-4">
+              <h3 class="text-lg font-semibold text-slate-900">
+                <a class="hover:underline" href="{{ item.url }}">{{ item.data.title }}</a>
+              </h3>
+              {% if item.data.description %}
+                <p class="mt-2 text-slate-700">{{ item.data.description }}</p>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</section>

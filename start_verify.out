@@ -1,0 +1,7 @@
+
+> spen2.0@1.0.0 start
+> npx @11ty/eleventy --serve
+
+[11ty] Writing ./_site/index.html from ./src/index.md (liquid)
+[11ty] Wrote 1 file in 0.13 seconds (v3.1.2)
+[11ty] Watching…

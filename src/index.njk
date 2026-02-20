@@ -1,0 +1,78 @@
+---
+layout: layout.njk
+title: Home
+---
+<section class="mx-auto max-w-6xl px-4 py-16">
+  <h1 class="text-4xl font-bold tracking-tight text-slate-900">{{ site.hero_title }}</h1>
+  <p class="mt-4 max-w-2xl text-lg text-slate-700">{{ site.hero_subtitle }}</p>
+</section>
+
+<section class="mx-auto max-w-6xl px-4 pb-12">
+  <h2 class="text-2xl font-semibold text-slate-900">Latest Updates</h2>
+  {% set updates = collections.updates | reverse %}
+  {% if updates and updates.length %}
+    <ul class="mt-4 space-y-3">
+      {% for item in updates %}
+        {% if loop.index <= 3 %}
+          <li>
+            <a class="text-slate-800 hover:underline" href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="mt-4 text-slate-600">No updates yet.</p>
+  {% endif %}
+</section>
+
+<section class="mx-auto max-w-6xl px-4 pb-12">
+  <h2 class="text-2xl font-semibold text-slate-900">Featured Publications</h2>
+  {% set publications = collections.publications | reverse %}
+  {% if publications and publications.length %}
+    {% set featuredShown = 0 %}
+    <ul class="mt-4 space-y-3">
+      {% for item in publications %}
+        {% if item.data.featured and featuredShown < 3 %}
+          {% set featuredShown = featuredShown + 1 %}
+          <li>
+            <a class="text-slate-800 hover:underline" href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% if featuredShown == 0 %}
+      <ul class="mt-4 space-y-3">
+        {% for item in publications %}
+          {% if loop.index <= 3 %}
+            <li>
+              <a class="text-slate-800 hover:underline" href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% else %}
+    <p class="mt-4 text-slate-600">No publications yet.</p>
+  {% endif %}
+</section>
+
+<section class="mx-auto max-w-6xl px-4 pb-16">
+  <h2 class="text-2xl font-semibold text-slate-900">Research Areas</h2>
+  {% set researchItems = collections.research %}
+  {% if researchItems and researchItems.length %}
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {% for item in researchItems %}
+        <article class="rounded-lg border border-slate-200 p-4">
+          <h3 class="text-lg font-medium text-slate-900">
+            <a class="hover:underline" href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a>
+          </h3>
+          {% if item.data.summary %}
+            <p class="mt-2 text-sm text-slate-700">{{ item.data.summary }}</p>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="mt-4 text-slate-600">No research areas published yet.</p>
+  {% endif %}
+</section>

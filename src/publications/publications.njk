@@ -1,0 +1,27 @@
+---
+layout: layout.njk
+title: Publications
+permalink: /publications/index.html
+---
+<section class="mx-auto max-w-6xl px-4 py-12">
+  <h1 class="text-3xl font-bold text-slate-900">Publications</h1>
+
+  {% if collections.publications and collections.publications.length %}
+    <div class="mt-6 space-y-4">
+      {% for pub in collections.publications %}
+        <article class="rounded-lg border border-slate-200 p-4">
+          <h2 class="text-xl font-semibold text-slate-900">{{ pub.data.title }}</h2>
+          <p class="mt-1 text-slate-700"><strong>Authors:</strong> {{ pub.data.authors }}</p>
+          <p class="text-slate-700"><strong>Year:</strong> {{ pub.data.year }}</p>
+          {% if pub.data.pdf %}
+            <p class="mt-2">
+              <a class="text-blue-700 hover:underline" href="{{ pub.data.pdf }}">View PDF</a>
+            </p>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="mt-6 text-slate-600">No publications available.</p>
+  {% endif %}
+</section>

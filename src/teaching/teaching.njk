@@ -1,0 +1,29 @@
+---
+layout: layout.njk
+title: Teaching
+permalink: /teaching/index.html
+---
+<section class="mx-auto max-w-6xl px-4 py-12">
+  <h1 class="text-3xl font-bold text-slate-900">Courses</h1>
+
+  {% if collections.teaching and collections.teaching.length %}
+    <div class="mt-6 space-y-4">
+      {% for course in collections.teaching %}
+        <article class="rounded-lg border border-slate-200 p-4">
+          <h2 class="text-xl font-semibold text-slate-900">
+            <a class="hover:underline" href="{{ course.url }}">{{ course.data.title }}</a>
+          </h2>
+          <p class="mt-1 text-slate-700"><strong>Semester:</strong> {{ course.data.semester }}</p>
+          <p class="text-slate-700"><strong>Active:</strong> {{ course.data.active }}</p>
+          {% if course.data.syllabus %}
+            <p class="mt-2">
+              <a class="text-blue-700 hover:underline" href="{{ course.data.syllabus }}">View Syllabus</a>
+            </p>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="mt-6 text-slate-600">No courses available.</p>
+  {% endif %}
+</section>

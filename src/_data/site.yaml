@@ -1,0 +1,6 @@
+site_name: "Example Site"
+tagline: "A concise placeholder tagline"
+contact_email: "contact@example.com"
+address: "123 Example Street, City, ST 12345"
+hero_title: "Welcome to Our Site"
+hero_subtitle: "This is placeholder hero copy for Eleventy"

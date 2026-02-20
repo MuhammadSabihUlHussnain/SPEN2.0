@@ -1,0 +1,24 @@
+---
+layout: layout.njk
+title: Updates
+permalink: /updates/index.html
+---
+<section class="mx-auto max-w-6xl px-4 py-12">
+  <h1 class="text-3xl font-bold text-slate-900">Updates</h1>
+
+  {% if collections.updates and collections.updates.length %}
+    <div class="mt-6 space-y-5">
+      {% for update in collections.updates %}
+        <article class="rounded-lg border border-slate-200 p-4">
+          <h2 class="text-xl font-semibold text-slate-900">
+            <a class="hover:underline" href="{{ update.url }}">{{ update.data.title }}</a>
+          </h2>
+          <p class="mt-1 text-sm text-slate-600">{{ update.date }}</p>
+          <p class="mt-2 text-slate-700">{{ update.data.excerpt or "No excerpt available." }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="mt-6 text-slate-600">No updates available.</p>
+  {% endif %}
+</section>

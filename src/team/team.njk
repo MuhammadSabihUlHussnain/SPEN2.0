@@ -1,0 +1,30 @@
+---
+layout: layout.njk
+title: Team
+permalink: /team/index.html
+---
+<section class="mx-auto max-w-6xl px-4 py-12">
+  <h1 class="text-3xl font-bold text-slate-900">Team</h1>
+
+  {% set categories = ["faculty", "phd", "masters", "alumni"] %}
+
+  {% for category in categories %}
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold capitalize text-slate-900">{{ category }}</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {% for member in collections.team %}
+          {% if member.data.category == category %}
+            <article class="rounded-lg border border-slate-200 p-4">
+              <h3 class="text-lg font-semibold text-slate-900">
+                <a class="hover:underline" href="{{ member.url }}">{{ member.data.title }}</a>
+              </h3>
+              {% if member.data.role %}
+                <p class="mt-1 text-sm text-slate-700">{{ member.data.role }}</p>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</section>
