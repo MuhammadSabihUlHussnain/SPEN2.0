@@ -1,0 +1,85 @@
+backend:
+  name: github
+  repo: YOUR_USERNAME/spenlab-website
+  branch: main
+
+media_folder: static/images
+public_folder: /static/images
+
+collections:
+  - name: publications
+    label: Publications
+    folder: src/publications
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Authors, name: authors, widget: string }
+      - { label: Year, name: year, widget: number }
+      - { label: Research Area, name: research_area, widget: string, required: false }
+      - { label: PDF, name: pdf, widget: string, required: false }
+      - { label: Featured, name: featured, widget: boolean, default: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: team
+    label: Team
+    folder: src/team
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: title, widget: string }
+      - label: Category
+        name: category
+        widget: select
+        options: [faculty, phd, masters, alumni]
+      - { label: Order, name: order, widget: number, required: false }
+      - { label: Role, name: role, widget: string, required: false }
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  - name: updates
+    label: Updates
+    folder: src/updates
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime }
+      - { label: Excerpt, name: excerpt, widget: text, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: research
+    label: Research
+    folder: src/research
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Image, name: image, widget: image, required: false }
+      - { label: Order, name: order, widget: number, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: teaching
+    label: Teaching
+    folder: src/teaching
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Semester, name: semester, widget: string, required: false }
+      - { label: Syllabus, name: syllabus, widget: string, required: false }
+      - { label: Active, name: active, widget: boolean, default: true }
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  - name: service
+    label: Service
+    folder: src/service
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - label: Category
+        name: category
+        widget: select
+        options: [conference, editorial, outreach]
+      - { label: Description, name: description, widget: text, required: false }
+      - { label: Body, name: body, widget: markdown, required: false }
